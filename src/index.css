@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  /* Neutral Colors */
+  --neutral-900: #12131a;
+  --neutral-800: #21222c;
+  --neutral-700: #2a2b37;
+  --neutral-600: #404254;
+  --neutral-200: #e4e4ef;
+  --neutral-100: #f2f2f7;
+  --neutral-0: #ffffff;
+
+  /* Purple (Blue) Colors */
+  --blue-400: #d3a0fa;
+  --blue-500: #c27cf8;
+
+  /* Yellow */
+  --yellow-500: #ff9f00;
+
+  /* Orange */
+  --orange-500: #fe8159;
+  --orange-800: #da3701;
+
+  /* Typography - Font family */
+  --font-primary: 'DM Sans', sans-serif;
+
+  /* Typography - Font Sizes */
+  --font-size-1: 64px; /* Text Preset 1 */
+  --font-size-1-mobile: 40px;
+  --font-size-2: 24px; /* Text Preset 2 */
+  --font-size-3: 20px; /* Text Preset 3 */
+  --font-size-4: 16px; /* Text Preset 4 */
+
+  /* Typography - Line Heights */
+  --line-height-1: 100%;
+  --line-height-2: 130%;
+  --line-height-3: 140%;
+
+  /* Typography - Letter Spacing */
+  --letter-spacing-1: -1px;
+  --letter-spacing-2: -0.6px;
+
+  /* Font Weights */
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-regular: 400;
+}
+
+/* Typography Utilities */
+.text-preset-1 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+}
+
+.text-preset-1-mobile {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-1-mobile);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+}
+
+.text-preset-2 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-1);
+}
+
+.text-preset-3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-3);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+.text-preset-4 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--neutral-900);
+  font-family: var(--font-primary);
+  padding: 1rem;
+  color: white;
+}
+
+Img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+Input,
+button,
+texture,
+select {
+  font: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* MAIN */
+
+.main-container {
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+header .main-logo {
+  width: 75%;
+}
+
+header button {
+  background-color: var(--neutral-700);
+  border: none;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+
+header .mode-logo {
+  width: 22px;
+}
+
+/* BODY CONTENT */
+main {
+}
+
+main h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+main textarea {
+  width: 100%;
+  background-color: var(--neutral-700);
+  color: white;
+  font: inherit;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  height: 200px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.options-holder {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.option-container {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.option-container button {
+  width: 1rem;
+  height: 1rem;
+  background-color: inherit;
+  border: 1px solid white;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+}
+
+.option-container .btn-on {
+  background-color: var(--blue-500);
+  border: none;
+}
