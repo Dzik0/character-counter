@@ -214,8 +214,6 @@ textarea:focus {
   padding: 1.2rem 1.5rem;
   border-radius: 1rem;
   color: var(--neutral-900);
-  background-color: var(--blue-400);
-  background-image: url(./assets/pattern-character-count.svg);
   background-position: right;
   background-repeat: no-repeat;
 }
@@ -242,9 +240,6 @@ textarea:focus {
   align-items: center;
 }
 
-.letter-box-letter {
-}
-
 .letter-box-bar-container {
   background-color: var(--neutral-700);
   width: 60%;
@@ -257,7 +252,4 @@ textarea:focus {
   width: 50%;
   height: 100%;
   background-color: var(--blue-500);
-}
-
-.letter-box-stats {
 }

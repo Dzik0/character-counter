@@ -2,15 +2,37 @@ import { useState } from 'react';
 import CountBox from './CountBox.tsx';
 import LetterBox from './LetterBox.tsx';
 import OptionBox from './OptionBox.tsx';
+import { requirements } from '../requirements.ts';
+import { countBox } from '../countThings.ts';
 
 function Body() {
-  const [excludeSpace, setExcludeSpace] = useState<boolean>(false);
-  const [charLimit, setCharLimit] = useState<boolean>(false);
+  //STATES
+  const [req, setReq] = useState(requirements);
+  const [text, setText] = useState<string | null>(null);
 
-  function toggleBooleanState(
-    setState: React.Dispatch<React.SetStateAction<boolean>>
-  ): void {
-    setState((pS) => !pS);
+  //VARIABLES
+  const charCount: number | undefined = text?.split('').length;
+  const wordCount: number | undefined = text?.split(' ').length;
+  const sentenceCount: number | undefined = text?.split('.').length;
+  console.log('Char count:', charCount);
+  console.log('Word count:', wordCount);
+  console.log('Sentence count:', sentenceCount);
+
+  //FUNCTIONS
+  function toggleBooleanState(id: number) {
+    setReq((pS) =>
+      pS.map((item) => {
+        if (item.id === id) {
+          return { ...item, isActive: !item.isActive };
+        }
+
+        return item;
+      })
+    );
+  }
+
+  function handleTextChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    setText(e.target.value);
   }
 
   return (
@@ -19,29 +41,32 @@ function Body() {
       <textarea
         name=""
         id=""
-        defaultValue="Hello, my name is Peter and I live in Warsaw. My hobby is fishing and coding. I love playing video games and learning new stuff"
+        onChange={(e) => {
+          handleTextChange(e);
+        }}
       ></textarea>
       <div className="options-holder">
-        <OptionBox
-          handleToggle={() => {
-            toggleBooleanState(setExcludeSpace);
-          }}
-          isActive={excludeSpace}
-          textInfo="Exclude Space"
-        />
-        <OptionBox
-          handleToggle={() => {
-            toggleBooleanState(setCharLimit);
-          }}
-          isActive={charLimit}
-          textInfo="Set Character Limit"
-        />
+        {req.map((element) => (
+          <OptionBox
+            key={element.id}
+            info={element}
+            handleToggle={() => {
+              toggleBooleanState(element.id);
+            }}
+          />
+        ))}
         <p className="text-preset-4">Approx. reading time &lt; 1 min</p>
       </div>
       <div className="count-box-container">
-        <CountBox />
-        <CountBox />
-        <CountBox />
+        {countBox.map((element) => (
+          <CountBox
+            key={element.id}
+            info={element}
+            wordCount={wordCount}
+            charCount={charCount}
+            sentenceCount={sentenceCount}
+          />
+        ))}
       </div>
       <div className="letter-info-container">
         <h2 className="text-preset-2">Letter Density</h2>
@@ -57,3 +82,18 @@ function Body() {
 }
 
 export default Body;
+
+/*         <OptionBox
+          handleToggle={() => {
+            toggleBooleanState(setExcludeSpace);
+          }}
+          isActive={excludeSpace}
+          textInfo="Exclude Space"
+        />
+        <OptionBox
+          handleToggle={() => {
+            toggleBooleanState(setCharLimit);
+          }}
+          isActive={charLimit}
+          textInfo="Set Character Limit"
+        /> */

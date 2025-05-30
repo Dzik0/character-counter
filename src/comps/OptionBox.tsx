@@ -2,19 +2,22 @@ import clsx from 'clsx';
 
 type Prop = {
   handleToggle: () => void;
-  isActive: boolean;
-  textInfo: string;
+  info: {
+    id: number;
+    name: string;
+    isActive: boolean;
+  };
 };
 
-function OptionBox({ handleToggle, isActive, textInfo }: Prop) {
-  const checkTurn = isActive;
+function OptionBox({ handleToggle, info }: Prop) {
+  const checkTurn = info.isActive;
 
   return (
     <div className="option-container">
       <button className={clsx(checkTurn && 'btn-on')} onClick={handleToggle}>
-        ✔
+        {checkTurn && '✔'}
       </button>
-      <p className="text-preset-4">{textInfo}</p>
+      <p className="text-preset-4">{info.name}</p>
     </div>
   );
 }
