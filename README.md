@@ -1,54 +1,112 @@
-# React + TypeScript + Vite
+# ✍️ Real-Time Text Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and interactive text analysis tool built with **React** and **TypeScript**. This application provides live feedback on word count, character count, sentence count, and letter frequency as users type. It includes customization options and a clean light/dark mode toggle.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📸 Preview
 
-## Expanding the ESLint configuration
+![Preview of the Real-Time Text Analyzer](./screenshot.jpg)
+LIVE: http://dzik0.github.io/character-counter
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Features
+
+- 🔠 **Live Letter Frequency Analysis**
+- 📝 **Word, Character & Sentence Count**
+- ⚙️ **Toggleable Options**:
+
+  - Count with or without spaces
+  - Set character limits
+
+- ⏱️ **Approximate Reading Time Display**
+- 🌗 **Light/Dark Mode Styling (via `mode` prop)**
+- ⚛️ **React Functional Components with Hooks**
+- 🧠 Smart handling of only alphabetic characters for frequency analysis
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** with **TypeScript**
+- **CSS Modules / Vanilla CSS**
+- **clsx** for conditional class names
+
+---
+
+## 📁 File Structure
+
+```
+src/
+│
+├── components/
+│   ├── Body.tsx           # Main component handling logic & layout
+│   ├── CountBox.tsx       # Displays metrics (words, chars, etc.)
+│   ├── LetterBox.tsx      # Displays individual letter frequencies
+│   └── OptionBox.tsx      # Renders toggleable user options
+│
+├── countThings.ts         # Metric configuration (e.g., for CountBox)
+├── requirements.ts        # Settings for toggles & limits
+└── assets/ (optional)     # Icons or images (if used)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧠 How It Works
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **TextArea input** is monitored with `onChange`.
+- **Letter frequency** is calculated using a filtered set of letters (ignores digits/symbols).
+- **State-driven UI updates** display counts and toggleable analysis options.
+- **Conditional rendering** shows warnings if the character limit is reached.
+
+---
+
+## 📦 Installation
+
+1. **Clone the repo**
+
+   ```bash
+   git clone https://github.com/your-username/text-analyzer.git
+   ```
+
+2. **Navigate to the project**
+
+   ```bash
+   cd text-analyzer
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## ✅ Todo / Improvements
+
+- [ ] Export analyzed data (PDF/CSV)
+- [ ] Add character/word goals
+
+---
+
+## 👨‍💻 Author
+
+**Piotr Głazowski**
+_React & TypeScript Developer_
+[Portfolio](#) • [GitHub](https://github.com/your-username)
+
+---
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
