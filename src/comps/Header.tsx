@@ -1,14 +1,26 @@
-import mainLogo from '../assets/logo-dark-theme.svg';
+import darkLogo from '../assets/logo-dark-theme.svg';
+import lightLogo from '../assets/logo-light-theme.svg';
 import sunLogo from '../assets/icon-sun.svg';
+import moonLogo from '../assets/icon-moon.svg';
 
-function Header() {
+import clsx from 'clsx';
+
+type Props = {
+  mode: boolean;
+  changeMode: () => void;
+};
+
+function Header({ mode, changeMode }: Props) {
+  const logo = !mode ? darkLogo : lightLogo;
+  const buttonLogo = mode ? moonLogo : sunLogo;
+
   return (
     <header>
       <div>
-        <img src={mainLogo} alt="" className="main-logo" />
+        <img src={logo} alt="" className="main-logo" />
       </div>
-      <button>
-        <img src={sunLogo} alt="" className="mode-logo" />
+      <button onClick={changeMode} className={clsx(mode && 'light')}>
+        <img src={buttonLogo} alt="" className="mode-logo" />
       </button>
     </header>
   );

@@ -85,15 +85,29 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
+
+  --bg-color: var(--neutral-900);
 }
 
 body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--neutral-900);
+  background-color: var(--bg-color);
   font-family: var(--font-primary);
   padding: 1rem;
   color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--neutral-900);
+    color: white;
+  }
+}
+
+body.light {
+  background-color: white;
+  color: var(--neutral-900);
 }
 
 Img,
@@ -124,6 +138,12 @@ select {
   margin: 0 auto;
 }
 
+@media (width > 700px) {
+  .main-container {
+    max-width: 700px;
+  }
+}
+
 /* HEADER */
 
 header {
@@ -142,6 +162,11 @@ header button {
   border: none;
   padding: 0.3rem;
   border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+header button.light {
+  background-color: var(--neutral-100);
 }
 
 header .mode-logo {
@@ -166,14 +191,26 @@ main textarea {
   padding: 1rem;
   border: none;
   border-radius: 1rem;
-  height: 200px;
+  height: 150px;
   resize: none;
+}
+
+main textarea.light {
+  background-color: var(--neutral-200);
+  color: var(--neutral-700);
 }
 
 textarea:focus {
   outline: none;
 }
 
+.warning-msg {
+  font-size: 1rem;
+  color: red;
+  margin-left: 0.5rem;
+}
+
+/* REQUIREMENTS */
 .options-holder {
   margin-top: 1rem;
   display: grid;
@@ -196,6 +233,7 @@ textarea:focus {
   justify-content: center;
   align-items: center;
   font-size: 0.7rem;
+  cursor: pointer;
 }
 
 .option-container .btn-on {
@@ -203,11 +241,52 @@ textarea:focus {
   border: none;
 }
 
+.option-container .btn-on.light {
+  background-color: var(--blue-500);
+  border: none;
+}
+
+.option-container button.light {
+  border: 1px solid var(--neutral-900);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.limit-input {
+  margin-left: 0.5rem;
+  width: 3.5rem;
+  font-family: inherit;
+  background-color: var(--neutral-600);
+  color: white;
+  padding-left: 3px;
+  border-radius: 4px;
+  appearance: none;
+  border: none;
+}
+
+.limit-input.light {
+  color: var(--neutral-700);
+  background-color: var(--neutral-200);
+}
+
+.limit-input:focus {
+  outline: none;
+}
+
 /* COUNT BOX THINGS */
 .count-box-container {
   margin-top: 2.5rem;
   display: grid;
   gap: 1rem;
+}
+
+@media (width > 700px) {
+  .count-box-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .count-box {
@@ -240,12 +319,25 @@ textarea:focus {
   align-items: center;
 }
 
+.letter-box-letter {
+  flex-basis: 1.5rem;
+}
+
+.letter-box-stats {
+  flex-basis: 7rem;
+  text-align: end;
+}
+
 .letter-box-bar-container {
   background-color: var(--neutral-700);
   width: 60%;
   height: 0.8rem;
   border-radius: 0.5rem;
   overflow: hidden;
+}
+
+.letter-box-bar-container.light {
+  background-color: var(--neutral-200);
 }
 
 .letter-box-fill-bar {

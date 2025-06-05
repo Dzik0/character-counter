@@ -8,9 +8,18 @@ type Props = {
   charCount: number | undefined;
   wordCount: number | undefined;
   sentenceCount: number | undefined;
+  notSpaceCounting: boolean;
+  charCountNoSpace: number;
 };
 
-function CountBox({ info, charCount, wordCount, sentenceCount }: Props) {
+function CountBox({
+  info,
+  charCount,
+  wordCount,
+  sentenceCount,
+  notSpaceCounting,
+  charCountNoSpace,
+}: Props) {
   const style: React.CSSProperties = {
     backgroundColor: info.backgroundColor,
     backgroundImage: info.backgroundPattern,
@@ -18,6 +27,10 @@ function CountBox({ info, charCount, wordCount, sentenceCount }: Props) {
 
   function returnNumber() {
     if (info.id === 1) {
+      if (notSpaceCounting) {
+        const number = charCountNoSpace ? charCountNoSpace : 0;
+        return number;
+      }
       const number = charCount ? charCount : 0;
       return number;
     }
